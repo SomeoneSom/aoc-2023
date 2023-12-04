@@ -45,9 +45,13 @@ pub fn solve_part1(input: &(Vec<Part>, Vec<Vec<char>>)) -> u32 {
             for neighbor in NEIGHBORS {
                 let copy = (coords.0 + neighbor.0, coords.1 + neighbor.1);
                 let line = schematic.get(copy.1 as usize);
-                if line.is_none() { continue; }
+                if line.is_none() {
+                    continue;
+                }
                 let symbol = line.unwrap().get(copy.0 as usize);
-                if symbol.is_none() { continue; }
+                if symbol.is_none() {
+                    continue;
+                }
                 match symbol.unwrap() {
                     '.' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0' => (),
                     _ => {
