@@ -37,11 +37,7 @@ const NEIGHBORS: [(i32, i32); 8] = [
     (1, 1),
 ];
 
-const NEIGHBORS_RIGHT: [(i32, i32); 3] = [
-    (1, -1),
-    (1, 0),
-    (1, 1),
-];
+const NEIGHBORS_RIGHT: [(i32, i32); 3] = [(1, -1), (1, 0), (1, 1)];
 
 #[aoc(day3, part1)]
 pub fn solve_part1(input: &(Vec<Part>, Vec<Vec<char>>)) -> u32 {
@@ -50,7 +46,11 @@ pub fn solve_part1(input: &(Vec<Part>, Vec<Vec<char>>)) -> u32 {
     for part in parts {
         let mut coords = part.coords;
         'partloop: for i in 0..part.length {
-            let neighbors = if i == 0 { NEIGHBORS.iter() } else { NEIGHBORS_RIGHT.iter() };
+            let neighbors = if i == 0 {
+                NEIGHBORS.iter()
+            } else {
+                NEIGHBORS_RIGHT.iter()
+            };
             for neighbor in neighbors {
                 let copy = (coords.0 + neighbor.0, coords.1 + neighbor.1);
                 let line = schematic.get(copy.1 as usize);
@@ -83,7 +83,11 @@ pub fn solve_part2(input: &(Vec<Part>, Vec<Vec<char>>)) -> u32 {
     for part in parts {
         let mut coords = part.coords;
         for i in 0..part.length {
-            let neighbors = if i == 0 { NEIGHBORS.iter() } else { NEIGHBORS_RIGHT.iter() };
+            let neighbors = if i == 0 {
+                NEIGHBORS.iter()
+            } else {
+                NEIGHBORS_RIGHT.iter()
+            };
             for neighbor in neighbors {
                 let copy = (coords.0 + neighbor.0, coords.1 + neighbor.1);
                 let line = schematic.get(copy.1 as usize);
