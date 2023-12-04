@@ -30,12 +30,60 @@ pub fn input_generator(input: &str) -> Vec<Game> {
 pub fn solve_part1(input: &Vec<Game>) -> u32 {
     let mut sum = 0u32;
     for game in input {
-        let red: u32 = game.cubes.iter().filter(|c| c.1 == 'r').map(|c| c.0).max().unwrap();
-        let green: u32 = game.cubes.iter().filter(|c| c.1 == 'g').map(|c| c.0).max().unwrap();
-        let blue: u32 = game.cubes.iter().filter(|c| c.1 == 'b').map(|c| c.0).max().unwrap();
+        let red: u32 = game
+            .cubes
+            .iter()
+            .filter(|c| c.1 == 'r')
+            .map(|c| c.0)
+            .max()
+            .unwrap();
+        let green: u32 = game
+            .cubes
+            .iter()
+            .filter(|c| c.1 == 'g')
+            .map(|c| c.0)
+            .max()
+            .unwrap();
+        let blue: u32 = game
+            .cubes
+            .iter()
+            .filter(|c| c.1 == 'b')
+            .map(|c| c.0)
+            .max()
+            .unwrap();
         if red <= 12 && green <= 13 && blue <= 14 {
             sum += game.id;
         }
+    }
+    sum
+}
+
+#[aoc(day2, part2)]
+pub fn solve_part2(input: &Vec<Game>) -> u32 {
+    let mut sum = 0u32;
+    for game in input {
+        let red: u32 = game
+            .cubes
+            .iter()
+            .filter(|c| c.1 == 'r')
+            .map(|c| c.0)
+            .max()
+            .unwrap();
+        let green: u32 = game
+            .cubes
+            .iter()
+            .filter(|c| c.1 == 'g')
+            .map(|c| c.0)
+            .max()
+            .unwrap();
+        let blue: u32 = game
+            .cubes
+            .iter()
+            .filter(|c| c.1 == 'b')
+            .map(|c| c.0)
+            .max()
+            .unwrap();
+        sum += red * green * blue;
     }
     sum
 }
