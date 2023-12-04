@@ -4,7 +4,7 @@ use regex::Regex;
 #[aoc(day1, part1)]
 pub fn solve_part1(input: &str) -> u32 {
     let mut sum = 0u32;
-    for line in input.split('\n') {
+    for line in input.lines() {
         let chars = line.chars();
         let mut digits = chars.filter_map(|c| c.to_digit(10));
         let first = digits.next().unwrap();
@@ -33,7 +33,7 @@ pub fn to_digit(input: &str) -> u32 {
 pub fn solve_part2(input: &str) -> u32 {
     let mut sum = 0u32;
     let re = Regex::new(r"(\d|one|two|three|four|five|six|seven|eight|nine)").unwrap();
-    for line in input.split('\n') {
+    for line in input.lines() {
         let mut captures = re.find_iter(line).map(|c| (c.as_str(), c.end() - 1));
         let first = captures.next().unwrap();
         let mut last = captures.last().unwrap_or(first);

@@ -11,7 +11,7 @@ pub fn input_generator(input: &str) -> Vec<Game> {
     let mut id = 1u32;
     let mut out = Vec::new();
     let re = Regex::new(r"\d+ (blue|red|green)").unwrap();
-    for line in input.split('\n') {
+    for line in input.lines() {
         let mut cubes = Vec::new();
         for capture in re.find_iter(line).map(|c| c.as_str()) {
             let parts = capture.split(' ').collect::<Vec<_>>();
